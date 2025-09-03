@@ -1,0 +1,194 @@
+/*
+  This file contains all the custom CSS for the Home component.
+  It is designed to be responsive and visually appealing.
+*/
+
+/* 🌟 Global Styles for the Home page */
+.home-wrapper {
+  background-color: #f8f9fa; /* A light background for the entire page */
+}
+
+/* --- */
+
+/* 🌟 Hero Section */
+.hero-section {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+  min-height: 80vh; /* Better for mobile responsiveness than a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  padding: 0 20px;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+  color: #060606;
+  max-width: 650px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  color: #fff !important;
+  border: none;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none; /* Ensure links don't have an underline */
+}
+
+.btn-gradient:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(255, 65, 108, 0.5);
+}
+
+/* --- */
+
+/* 🌟 Featured Products Section */
+.featured-products-container h2 {
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.product-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.35s ease;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  height: 100%; /* Ensure all cards in the carousel have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+  height: 220px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+.carousel-inner .row {
+  display: flex;
+  align-items: stretch;
+}
+
+.new-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #ff4b2b;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* --- */
+
+/* 🌟 Testimonials Section */
+.testimonial {
+  background: #f5f5f7;
+  padding: 40px;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.testimonial p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #f76666;
+  margin-bottom: 1rem;
+}
+
+.testimonial h5 {
+  color: #2d2c2c;
+  font-weight: 600;
+}
+
+/* --- */
+
+/* 🌟 Footer */
+.footer {
+  background: #111;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .product-card img {
+    height: 150px;
+  }
+  .testimonial {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-card .card-title {
+    font-size: 1rem;
+  }
+  .product-card .card-text {
+    font-size: 0.9rem;
+  }
+  .btn-gradient {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .hero-section {
+    min-height: 50vh;
+  }
+}

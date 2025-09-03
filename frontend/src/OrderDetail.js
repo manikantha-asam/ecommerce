@@ -19,7 +19,7 @@ const OrderDetail = () => {
       try {
         const accessToken = localStorage.getItem('access_token');
         const orderId = window.location.pathname.split('/').pop();
-        const response = await axios.get(`http://127.0.0.1:8000/api/order/${orderId}/`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/order/${orderId}/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -144,7 +144,7 @@ const OrderDetail = () => {
                           <div className="col-md-4 text-center">
                             {item.product?.image && (
                               <img
-                                src={`http://127.0.0.1:8000${item.product.image}`}
+                                src={`${process.env.REACT_APP_API_URL}${item.product.image}`}
                                 alt={item.product.name}
                                 className="img-fluid rounded shadow-sm"
                                 style={{ maxHeight: '150px', objectFit: 'cover' }}

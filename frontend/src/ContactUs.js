@@ -29,7 +29,7 @@ function ContactUs() {
 
     try {
       // Assuming a new backend endpoint for contact form submission
-      const response = await axios.post('http://127.0.0.1:8000/api/contact/', formData);
+      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/contact/', formData);
       console.log('Contact form submission successful:', response.data);
       toast.success('Your message has been sent!', { position: "top-right" });
       setFormData({

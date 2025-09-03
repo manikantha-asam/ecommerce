@@ -74,7 +74,7 @@ const Registration = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            axios.post('http://127.0.0.1:8000/api/register/', formData)
+            axios.post('${process.env.REACT_APP_API_URL}/api/register/', formData)
                 .then(response => {
                     toast.success('Registration successful! You can now log in.', {
                         position: "top-right"

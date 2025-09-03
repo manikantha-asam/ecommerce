@@ -23,7 +23,7 @@ const PlaceOrder = () => {
     
     try {
       const accessToken = localStorage.getItem('access_token');
-      const response = await axios.post('http://127.0.0.1:8000/api/place-order/', {}, {
+      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/place-order/', {}, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

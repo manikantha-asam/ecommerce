@@ -8,7 +8,7 @@ const ForgotPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8000/api/request-password-reset/', { email })
+    axios.post('${process.env.REACT_APP_API_URL}/api/request-password-reset/', { email })
       .then(response => {
         setMessage('Password reset link has been sent to your email');
       })

@@ -22,7 +22,7 @@ const Profile = () => {
     const fetchData = async () => {
         const accessToken = localStorage.getItem('access_token');
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/customer/', {
+            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/customer/', {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }
@@ -63,7 +63,7 @@ const Profile = () => {
         });
 
         try {
-            const response = await axios.patch('http://127.0.0.1:8000/api/customer/', formData, {
+            const response = await axios.patch('${process.env.REACT_APP_API_URL}/api/customer/', formData, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }

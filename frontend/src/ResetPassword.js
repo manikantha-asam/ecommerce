@@ -25,7 +25,7 @@ const ResetPassword = () => {
       setMessage('Passwords do not match');
       return;
     }
-    axios.post(`http://127.0.0.1:8000/api/reset-password/${uid}/${token}/`, { password })
+    axios.post(`${process.env.REACT_APP_API_URL}/api/reset-password/${uid}/${token}/`, { password })
       .then(response => {
         setMessageType('success');
         setMessage('Password has been reset successfully');

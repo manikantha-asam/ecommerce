@@ -25,7 +25,7 @@ const Home = ({ isAuthenticated }) => {
   const handleAddToCart = (productId) => {
     if (isAuthenticated) {
       const token = localStorage.getItem('access_token');
-      axios.post(`http://127.0.0.1:8000/api/add-to-cart/`, { product_id: productId }, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/add-to-cart/`, { product_id: productId }, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
         .then(() => toast.success('Product added to cart!'))
@@ -38,7 +38,7 @@ const Home = ({ isAuthenticated }) => {
   const handleBuyNow = (productId) => {
     if (isAuthenticated) {
       const token = localStorage.getItem('access_token');
-      axios.post(`http://127.0.0.1:8000/api/add-to-cart/`, { product_id: productId }, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/add-to-cart/`, { product_id: productId }, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(() => {
@@ -73,7 +73,7 @@ const Home = ({ isAuthenticated }) => {
   useEffect(() => {
     async function fetchFeaturedProducts() {
       try {
-        const { data } = await axios.get("http://127.0.0.1:8000/api/getProducts/");
+        const { data } = await axios.get("${process.env.REACT_APP_API_URL}/api/getProducts/");
         setFeaturedProducts(data);
       } catch (error) {
         console.error("Error fetching featured products:", error);
@@ -97,7 +97,7 @@ const Home = ({ isAuthenticated }) => {
     const slideItems = featuredProducts.slice(i * 4, (i + 1) * 4).map((product, index) => (
       <Col sm={3} key={index}>
         <Card className="mb-4 product-card shadow-effect" onClick={() => openProductModal(product)}>
-          <img src={`http://127.0.0.1:8000${product.image}`} alt="Product" className="img-fluid mx-auto d-block" />
+          <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt="Product" className="img-fluid mx-auto d-block" />
           <CardBody className="text-center">
             <CardTitle tag="h5">{product.name}</CardTitle>
             <CardText tag="h5">
@@ -163,7 +163,7 @@ const Home = ({ isAuthenticated }) => {
         <ModalBody>
           <Row>
             <Col md={6}>
-              <img src={`http://127.0.0.1:8000${selectedProduct?.image}`} alt="Product" className="img-fluid" />
+              <img src={`${process.env.REACT_APP_API_URL}${selectedProduct?.image}`} alt="Product" className="img-fluid" />
             </Col>
             <Col md={6}>
               <h5>Description:</h5>

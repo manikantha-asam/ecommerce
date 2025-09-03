@@ -19,7 +19,7 @@ const CategoryPage = ({ isAuthenticated }) => {
     if (isAuthenticated) {
       const token = localStorage.getItem('access_token');
 
-      axios.post(`http://127.0.0.1:8000/api/add-to-cart/`, { product_id: productId }, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/add-to-cart/`, { product_id: productId }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -43,7 +43,7 @@ const CategoryPage = ({ isAuthenticated }) => {
     useEffect(() => {
         async function fetchProductsByCategory() {
             try {
-                const { data } = await axios.get(`http://127.0.0.1:8000/api/getProducts/?category=${category}`);
+                const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/getProducts/?category=${category}`);
                 const groupedProducts = groupProductsByCategory(data);
                 setCategoryProducts(groupedProducts);
             } catch (error) {
@@ -75,7 +75,7 @@ const CategoryPage = ({ isAuthenticated }) => {
                             {categoryProducts[cat].map((product, index) => (
                                 <Col key={index} md={3} className="mb-4">
                                     <Card style={{ width: "100%" }}>
-                                        <img src={`http://127.0.0.1:8000${product.image}`} className="card-img-top" alt={product.name} style={{ maxHeight: "400px", objectFit: "cover" }} />
+                                        <img src={`${process.env.REACT_APP_API_URL}${product.image}`} className="card-img-top" alt={product.name} style={{ maxHeight: "400px", objectFit: "cover" }} />
                                         <CardBody>
                                             <CardTitle tag="h5">{product.name}</CardTitle>
                                             <CardText tag="h5">

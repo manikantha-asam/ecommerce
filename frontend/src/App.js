@@ -33,7 +33,7 @@ const App = () => {
 
   const fetchUserStatus = async (token) => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/customer/', {
+      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/customer/', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.is_staff) {
@@ -65,7 +65,7 @@ const App = () => {
 
   const handleLogout = () => {
     const refreshToken = localStorage.getItem('refresh_token');
-    axios.post('http://127.0.0.1:8000/api/logout/', { refresh: refreshToken })
+    axios.post('${process.env.REACT_APP_API_URL}/api/logout/', { refresh: refreshToken })
       .then(() => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');

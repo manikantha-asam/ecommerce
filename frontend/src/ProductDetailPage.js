@@ -23,7 +23,7 @@ const ProductDetailPage = ({ isAuthenticated }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`http://127.0.0.1:8000/api/product/${productId}/`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/product/${productId}/`);
         setProduct(data);
       } catch (err) {
         console.error("Error fetching product details:", err);
@@ -38,7 +38,7 @@ const ProductDetailPage = ({ isAuthenticated }) => {
   const handleAddToCart = () => {
     if (isAuthenticated) {
       const token = localStorage.getItem('access_token');
-      axios.post(`http://127.0.0.1:8000/api/add-to-cart/`, { product_id: productId }, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/add-to-cart/`, { product_id: productId }, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
         .then(() => {
@@ -79,7 +79,7 @@ const ProductDetailPage = ({ isAuthenticated }) => {
         <Row className="align-items-center">
           <Col md={6} className="text-center">
             <img
-              src={`http://127.0.0.1:8000${product.image}`}
+              src={`${process.env.REACT_APP_API_URL}${product.image}`}
               alt={product.name}
               className="img-fluid rounded shadow-lg"
               style={{

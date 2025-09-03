@@ -18,7 +18,7 @@ const GetProducts = ({ isAuthenticated }) => {
     if (isAuthenticated) {
       const token = localStorage.getItem('access_token');
 
-      axios.post(`http://127.0.0.1:8000/api/add-to-cart/`, { product_id: productId }, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/add-to-cart/`, { product_id: productId }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -38,7 +38,7 @@ const GetProducts = ({ isAuthenticated }) => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const { data } = await axios.get("http://127.0.0.1:8000/api/getProducts/");
+        const { data } = await axios.get("${process.env.REACT_APP_API_URL}/api/getProducts/");
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -63,7 +63,7 @@ const GetProducts = ({ isAuthenticated }) => {
                     style={{ height: "220px", overflow: "hidden" }}
                   >
                     <img
-                      src={`http://127.0.0.1:8000${product.image}`}
+                      src={`${process.env.REACT_APP_API_URL}${product.image}`}
                       alt={product.name}
                       style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
                     />

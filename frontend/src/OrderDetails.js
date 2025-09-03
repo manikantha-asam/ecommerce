@@ -15,7 +15,7 @@ const OrderDetails = () => {
     const fetchOrders = async () => {
       try {
         const accessToken = localStorage.getItem('access_token');
-        const response = await axios.get('http://127.0.0.1:8000/api/user-orders/', {
+        const response = await axios.get('${process.env.REACT_APP_API_URL}/api/user-orders/', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -82,7 +82,7 @@ const OrderDetails = () => {
                     </>
                   )}
                   <td className="align-middle">
-                    <img src={`http://127.0.0.1:8000${item.product.image}`} alt={item.product.name} className="img-fluid" style={{ maxHeight: '100px' }} />
+                    <img src={`${process.env.REACT_APP_API_URL}${item.product.image}`} alt={item.product.name} className="img-fluid" style={{ maxHeight: '100px' }} />
                   </td>
                   <td className="align-middle text-success">{item.product.name}</td>
                   <td className="align-middle text-danger">₹{item.product.price}</td>

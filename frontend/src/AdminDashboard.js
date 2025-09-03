@@ -80,9 +80,9 @@ const AdminDashboard = () => {
 
     try {
       const [customersRes, productsRes, ordersRes] = await Promise.all([
-        axios.get(`http://127.0.0.1:8000/api/customers/?search=${customerSearch}`, { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get(`http://127.0.0.1:8000/api/products/?search=${productSearch}`, { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get(`http://127.0.0.1:8000/api/all-orders/?search=${orderSearch}&shipping_status=${orderStatus}&created_at=${orderDate}`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${process.env.REACT_APP_API_URL}/api/customers/?search=${customerSearch}`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${process.env.REACT_APP_API_URL}/api/products/?search=${productSearch}`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${process.env.REACT_APP_API_URL}/api/all-orders/?search=${orderSearch}&shipping_status=${orderStatus}&created_at=${orderDate}`, { headers: { Authorization: `Bearer ${token}` } }),
       ]);
       setCustomers(customersRes.data);
       setProducts(productsRes.data);
@@ -174,9 +174,9 @@ const AdminDashboard = () => {
 
     try {
       if (isEditingProduct) {
-        await axios.patch(`http://127.0.0.1:8000/api/products/${productFormData.id}/`, formData, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.patch(`${process.env.REACT_APP_API_URL}/api/products/${productFormData.id}/`, formData, { headers: { Authorization: `Bearer ${token}` } });
       } else {
-        await axios.post('http://127.0.0.1:8000/api/products/', formData, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.post('${process.env.REACT_APP_API_URL}/api/products/', formData, { headers: { Authorization: `Bearer ${token}` } });
       }
       toggleProductModal();
       fetchAllData(customerSearchTerm, productSearchTerm, orderSearchTerm, orderFilterStatus, orderFilterDate);
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
     const token = localStorage.getItem('access_token');
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/products/${productId}/`, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${productId}/`, { headers: { Authorization: `Bearer ${token}` } });
         fetchAllData(customerSearchTerm, productSearchTerm, orderSearchTerm, orderFilterStatus, orderFilterDate);
       } catch (err) {
         console.error('Error deleting product:', err);
@@ -224,7 +224,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     const token = localStorage.getItem('access_token');
     try {
-      await axios.put(`http://127.0.0.1:8000/api/order/${orderStatusData.orderId}/`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/order/${orderStatusData.orderId}/`, {
         shipping_status: orderStatusData.shipping_status
       }, { headers: { Authorization: `Bearer ${token}` } });
       toggleOrderModal();

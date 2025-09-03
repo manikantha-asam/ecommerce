@@ -29,7 +29,7 @@ const Cart = () => {
   const fetchCartItems = async () => {
     try {
       const accessToken = localStorage.getItem('access_token');
-      const response = await axios.get('http://127.0.0.1:8000/api/view-cart/', {
+      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/view-cart/', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -55,7 +55,7 @@ const Cart = () => {
   const handleRemoveFromCart = async (itemId) => {
     try {
       const accessToken = localStorage.getItem('access_token');
-      await axios.delete(`http://127.0.0.1:8000/api/cart-item/${itemId}/`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cart-item/${itemId}/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -75,7 +75,7 @@ const Cart = () => {
     }
     try {
       const accessToken = localStorage.getItem('access_token');
-      await axios.put(`http://127.0.0.1:8000/api/cart-item/${itemId}/`, { quantity }, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/cart-item/${itemId}/`, { quantity }, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -91,7 +91,7 @@ const Cart = () => {
   const handlePlaceOrder = async () => {
     try {
       const accessToken = localStorage.getItem('access_token');
-      await axios.post('http://127.0.0.1:8000/api/place-order/', {}, {
+      await axios.post('${process.env.REACT_APP_API_URL}/api/place-order/', {}, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -140,7 +140,7 @@ const Cart = () => {
                           <MDBRow key={index} className="mb-4 d-flex justify-content-between align-items-center">
                             <MDBCol md="2" lg="2" xl="2">
                               <MDBCardImage
-                                src={`http://127.0.0.1:8000${item.product.image}`}
+                                src={`${process.env.REACT_APP_API_URL}${item.product.image}`}
                                 fluid className="rounded-3" alt={item.product.name} />
                             </MDBCol>
                             <MDBCol md="3" lg="3" xl="3">

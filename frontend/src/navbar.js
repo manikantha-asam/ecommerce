@@ -16,7 +16,7 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
   const fetchData = async () => {
     const accessToken = localStorage.getItem('access_token');
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/customer/', {
+      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/customer/', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
